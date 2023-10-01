@@ -1,9 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Nav = () => {
   return (
     <>
-      <div className=" w-100 border border-red-700"></div>
+      <div
+        className="
+       border-4
+       border-black 
+       flex items-center 
+       justify-between 
+       pl-6 
+       pr-2
+       py-2
+       m-3 
+       rounded-[15px]
+       "
+      >
+        <div className="leftNav flex">
+          <div className="logo text-4xl font-bold">Maven</div>
+          <ul className="flex items-center space-x-16 ml-20 text-xl font-bold">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/request">Request</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="h-16 w-20 border-4 border-black rounded-[15px] flex items-center justify-center hover:cursor-pointer">
+          <img className=" h-10" src="/images/search.png" alt="search"></img>
+        </div>
+      </div>
     </>
   );
 };
