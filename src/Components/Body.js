@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Content } from "./Content";
+import { MediaModal } from "./MediaModal";
+import { MainContext } from "../Context/Context";
 
 export const Body = () => {
+  const { modalVisible } = useContext(MainContext);
+
   //this data can be accessed from the backend -- this is just dummy data
   const data = [
     {
@@ -83,6 +87,7 @@ export const Body = () => {
           return <Content key={index} type={item.type} media={item.media} />;
         })}
       </div>
+      <MediaModal isVisible={modalVisible} />
     </>
   );
 };

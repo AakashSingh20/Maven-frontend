@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ButtonGroup } from "./Buttons/ButtonGroup";
+import { MainContext } from "../Context/Context";
 
 export const Content = ({ type, media }) => {
+  const { setmodalVisible } = useContext(MainContext);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -43,12 +46,14 @@ export const Content = ({ type, media }) => {
             customButtonGroup={<ButtonGroup />}
             partialVisible={true}
             draggable={false}
+            infinite={true}
           >
             {media.map((item, index) => {
               return (
                 <div
                   key={index}
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer"
+                  onClick={() => setmodalVisible(true)}
                 ></div>
               );
             })}
