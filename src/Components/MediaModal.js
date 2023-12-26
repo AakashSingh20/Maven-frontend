@@ -1,14 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MainContext } from "../Context/Context";
+import axios from "axios";
 
 export const MediaModal = ({ isVisible }) => {
-  const { setmodalVisible } = useContext(MainContext);
+  const { setmodalVisible, modalMediaId } = useContext(MainContext);
+  const [data, setdata] = useState({});
 
   const handleClose = (e) => {
     if (e.target.id === "modalBackground") {
       setmodalVisible(false);
     }
   };
+
+  const specificMovie = async (id = modalMediaId) => {
+    const res = await axios.get(`http://localhost:4000/api/movie/${id}`);
+    console.log("modal", res.data);
+    setdata(res.data);
+  };
+
+  useEffect(() => {
+    specificMovie();
+  }, [isVisible]);
 
   if (!isVisible) return null;
   return (
@@ -46,16 +58,13 @@ export const MediaModal = ({ isVisible }) => {
             </div>
             <div className="detail w-[420px] flex justify-between items-center m-2 ">
               {/* add the name here */}
-              <div className="title text-3xl font-bold">Extraction</div>
+              <div className="title text-3xl font-bold">{data.name}</div>
               {/* add the genre here */}
-              <div className="genre">Action</div>
+              <div className="genre">{data.genre}</div>
             </div>
             {/* add the description here */}
             <div className="description w-[410px] mt-6 text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              soluta earum quasi est ratione? Molestias earum quasi laboriosam?
-              Eos repellat quibusdam, libero culpa facilis tempore nihil rerum
-              itaque reiciendis vel.
+              {data.description}
             </div>
           </div>
           <div className="center h-[100%] flex items-center justify-center">
@@ -64,7 +73,12 @@ export const MediaModal = ({ isVisible }) => {
           <div className="right w-[50%] flex items-center justify-center">
             <div className="watch border-4 border-black w-[200px] h-[70px] flex justify-center items-center rounded-[20px] hover:cursor-pointer ">
               {/* add the watch link here */}
-              <div className="text-2xl font-bold">Watch Now</div>
+              <a
+                href="https://du64qha6bc0df.cloudfront.net/conan.mp4"
+                className="text-2xl font-bold"
+              >
+                Watch Now
+              </a>
             </div>
           </div>
         </div>

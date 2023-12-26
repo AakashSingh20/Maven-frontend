@@ -5,7 +5,7 @@ import { ButtonGroup } from "./Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
 
 export const Content = ({ type, media }) => {
-  const { setmodalVisible } = useContext(MainContext);
+  const { setmodalVisible, setmodalMediaId } = useContext(MainContext);
 
   const responsive = {
     superLargeDesktop: {
@@ -31,6 +31,13 @@ export const Content = ({ type, media }) => {
       partialVisibilityGutter: 80,
     },
   };
+  // console.log("content", media);
+
+  const specificMovie = (id) => {
+    console.log("movieID", id);
+    setmodalVisible(true);
+    setmodalMediaId(id);
+  };
 
   return (
     <>
@@ -53,7 +60,7 @@ export const Content = ({ type, media }) => {
                 <div
                   key={index}
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer"
-                  onClick={() => setmodalVisible(true)}
+                  onClick={() => specificMovie(item._id)}
                 ></div>
               );
             })}
