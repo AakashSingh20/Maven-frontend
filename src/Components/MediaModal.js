@@ -42,12 +42,12 @@ export const MediaModal = ({ isVisible }) => {
               {/* add the image here */}
               <img
                 className="h-[250px] w-[450px] "
-                src="https://www.pinkvilla.com/images/2023-06/1649626176_.jpg"
-                alt="extraction2"
+                src={data.image}
+                alt={data.name}
               />
               <div className="play absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-                {/* Add the link here */}
-                <a href="https://youtu.be/Y274jZs5s7s?si=nePXEnf_4ul5NJma">
+                {/* Add the trailer link here */}
+                <a href={data.trailer_url}>
                   <img
                     className="h-20 hover:cursor-pointer"
                     src="/images/play.png"
@@ -73,10 +73,7 @@ export const MediaModal = ({ isVisible }) => {
           <div className="right w-[50%] flex items-center justify-center">
             <div className="watch border-4 border-black w-[200px] h-[70px] flex justify-center items-center rounded-[20px] hover:cursor-pointer ">
               {/* add the watch link here */}
-              <a
-                href="https://du64qha6bc0df.cloudfront.net/conan.mp4"
-                className="text-2xl font-bold"
-              >
+              <a href={data.main_url} className="text-2xl font-bold">
                 Watch Now
               </a>
             </div>
