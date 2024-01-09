@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MainContext } from "../Context/Context";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 export const MediaModal = ({ isVisible }) => {
   const { setmodalVisible, modalMediaId } = useContext(MainContext);
+  const [id, setid] = useState("");
   const [data, setdata] = useState({});
 
   const handleClose = (e) => {
@@ -14,8 +16,9 @@ export const MediaModal = ({ isVisible }) => {
 
   const specificMovie = async (id = modalMediaId) => {
     const res = await axios.get(`http://localhost:4000/api/movie/${id}`);
-    console.log("modal", res.data);
+    // console.log("modal", res.data);
     setdata(res.data);
+    setid(res.data._id);
   };
 
   useEffect(() => {
@@ -73,9 +76,12 @@ export const MediaModal = ({ isVisible }) => {
           <div className="right w-[50%] flex items-center justify-center">
             <div className="watch border-4 border-black w-[200px] h-[70px] flex justify-center items-center rounded-[20px] hover:cursor-pointer ">
               {/* add the watch link here */}
-              <a href={data.main_url} className="text-2xl font-bold">
+              {/* <a href={data.main_url} className="text-2xl font-bold ">
                 Watch Now
-              </a>
+              </a> */}
+              <NavLink to={`/play/${id}`} className="text-2xl font-bold">
+                Watch Now
+              </NavLink>
             </div>
           </div>
         </div>

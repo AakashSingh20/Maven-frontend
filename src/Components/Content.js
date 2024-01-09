@@ -31,10 +31,10 @@ export const Content = ({ type, media }) => {
       partialVisibilityGutter: 80,
     },
   };
-  // console.log("content", media);
+  console.log("content", media);
 
   const specificMovie = (id) => {
-    console.log("movieID", id);
+    // console.log("movieID", id);
     setmodalVisible(true);
     setmodalMediaId(id);
   };
@@ -61,7 +61,9 @@ export const Content = ({ type, media }) => {
                   key={index}
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer"
                   onClick={() => specificMovie(item._id)}
-                ></div>
+                >
+                  <img src={item.image} alt={item.name} />
+                </div>
               );
             })}
           </Carousel>
