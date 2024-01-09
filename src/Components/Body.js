@@ -84,7 +84,7 @@ export const Body = () => {
 
   const movieData = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/movie");
+      const res = await axios.get("http://localhost:4000/movies/");
       // console.log("body", res.data.movies);
       setmovieArr(res.data.movies);
     } catch (error) {

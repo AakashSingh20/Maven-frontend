@@ -31,7 +31,7 @@ export const Content = ({ type, media }) => {
       partialVisibilityGutter: 80,
     },
   };
-  console.log("content", media);
+  // console.log("content", media);
 
   const specificMovie = (id) => {
     // console.log("movieID", id);

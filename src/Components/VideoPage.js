@@ -8,7 +8,8 @@ export const VideoPage = () => {
   const { id } = useParams();
 
   const getMovieUrl = async () => {
-    const res = await axios.get(`http://localhost:4000/api/movie/url/${id}`);
+    const res = await axios.get(`http://localhost:4000/movies/url/${id}`);
+    // console.log("v", res.data);
     seturl(res.data.main_url);
   };
 

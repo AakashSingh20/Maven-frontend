@@ -15,7 +15,7 @@ export const MediaModal = ({ isVisible }) => {
   };
 
   const specificMovie = async (id = modalMediaId) => {
-    const res = await axios.get(`http://localhost:4000/api/movie/${id}`);
+    const res = await axios.get(`http://localhost:4000/movies/${id}`);
     // console.log("modal", res.data);
     setdata(res.data);
     setid(res.data._id);
