@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Context from "./Context/Context";
+import { ThemeProvider } from "@material-tailwind/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Context>
-    <App />
-  </Context>
+  <ThemeProvider>
+    <Context>
+      <App />
+    </Context>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

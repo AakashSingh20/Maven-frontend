@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Nav = () => {
   return (
@@ -28,8 +28,15 @@ export const Nav = () => {
             </li>
           </ul>
         </div>
-        <div className="h-16 w-20 border-4 border-black rounded-[15px] flex items-center justify-center hover:cursor-pointer">
-          <img className=" h-10" src="/images/search.png" alt="search"></img>
+        <div className="flex space-x-3">
+          <div className="h-14 w-16 border-4 border-black rounded-[15px] flex items-center justify-center hover:cursor-pointer">
+            <img className=" h-8" src="/images/search.png" alt="search"></img>
+          </div>
+          <NavLink to={`/login`} className="text-2xl font-bold">
+            <div className="h-14 w-16 border-4 border-black rounded-[15px] flex items-center justify-center hover:cursor-pointer">
+              <img className=" h-8" src="/images/user.png" alt="search"></img>
+            </div>
+          </NavLink>
         </div>
       </div>
     </>
