@@ -8,80 +8,6 @@ export const Body = () => {
   const { modalVisible } = useContext(MainContext);
   const [movieArr, setmovieArr] = useState([]);
 
-  //this data can be accessed from the backend -- this is just dummy data
-  // const data = [
-  //   {
-  //     type: "Movies",
-  //     media: [
-  //       {
-  //         poster: "dummyposter.jpeg",
-  //         trailer: "dummy/youtubeurl",
-  //         title: "Dummy Title",
-  //         genre: "Dummy Genre",
-  //         description: "Dummy Description",
-  //         link: "dummy movie link",
-  //       },
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //     ],
-  //   },
-  //   {
-  //     type: "TV Shows",
-  //     media: [
-  //       {
-  //         poster: "dummyposter.jpeg",
-  //         trailer: "dummy/youtubeurl",
-  //         title: "Dummy Title",
-  //         genre: "Dummy Genre",
-  //         description: "Dummy Description",
-  //         seasons: [
-  //           {
-  //             season: 1,
-  //             episodes: [
-  //               {
-  //                 episode: 1,
-  //                 title: "Dummy Title",
-  //                 thumbanail: "dummythumbnail.jpeg",
-  //                 link: "dummy link",
-  //               },
-  //               {},
-  //               {},
-  //               {},
-  //               {},
-  //               {},
-  //               {},
-  //               {},
-  //               {},
-  //             ],
-  //           },
-  //           {},
-  //           {},
-  //           {},
-  //           {},
-  //           {},
-  //           {},
-  //           {},
-  //           {},
-  //         ],
-  //       },
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //       {},
-  //     ],
-  //   },
-  // ];
-
   const movieData = async () => {
     try {
       const res = await axios.get("http://localhost:4000/movies/");
@@ -99,9 +25,6 @@ export const Body = () => {
   return (
     <>
       <div className="">
-        {/* {data.map((item, index) => {
-          return <Content key={index} media={item.media} />;
-        })} */}
         <Content media={movieArr} type="Movies" />
       </div>
       <MediaModal isVisible={modalVisible} />

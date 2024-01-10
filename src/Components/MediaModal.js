@@ -45,7 +45,7 @@ export const MediaModal = ({ isVisible }) => {
               {/* add the image here */}
               <img
                 className="h-[250px] w-[450px] "
-                src={data.image}
+                src={data.himage}
                 alt={data.name}
               />
               <div className="play absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
