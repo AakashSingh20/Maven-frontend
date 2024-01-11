@@ -6,18 +6,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { VideoPage } from "./Components/VideoPage";
 import { Login } from "./Components/Login";
 import { Signup } from "./Components/Signup";
+import { Home } from "./Components/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Nav />
+        {/* <Nav /> */}
         <Routes>
-          <Route exact path="/" element={<Body />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Body />} />
           <Route exact path="/request" element={<Request />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/play/:id" element={<VideoPage />} />
+          <Route exact path="/home/:id" element={<VideoPage />} />
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>

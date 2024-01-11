@@ -15,10 +15,24 @@ export const MediaModal = ({ isVisible }) => {
   };
 
   const specificMovie = async (id = modalMediaId) => {
-    const res = await axios.get(`http://localhost:4000/movies/${id}`);
-    // console.log("modal", res.data);
-    setdata(res.data);
-    setid(res.data._id);
+    if (!id) {
+      console.error("ID is undefined");
+      return;
+    }
+
+    try {
+      const response = await axios.get(`http://localhost:4000/movies/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: JSON.parse(localStorage.getItem("Token")),
+        },
+      });
+
+      setid(response.data.media._id);
+      setdata(response.data.media);
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+    }
   };
 
   useEffect(() => {
@@ -76,10 +90,8 @@ export const MediaModal = ({ isVisible }) => {
           <div className="right w-[50%] flex items-center justify-center">
             <div className="watch border-4 border-black w-[200px] h-[70px] flex justify-center items-center rounded-[20px] hover:cursor-pointer ">
               {/* add the watch link here */}
-              {/* <a href={data.main_url} className="text-2xl font-bold ">
-                Watch Now
-              </a> */}
-              <NavLink to={`/play/${id}`} className="text-2xl font-bold">
+
+              <NavLink to={`/home/${id}`} className="text-2xl font-bold">
                 Watch Now
               </NavLink>
             </div>

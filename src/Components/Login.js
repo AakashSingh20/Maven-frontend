@@ -20,7 +20,9 @@ export const Login = () => {
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("Token", JSON.stringify(res.data.token));
-          navigate("/");
+          // console.log(localStorage.getItem("Token"));
+          // console.log(JSON.parse(localStorage.getItem("Token")));
+          navigate("/home");
         } else {
           alert("Invalid credentials");
         }
@@ -31,7 +33,7 @@ export const Login = () => {
     <>
       <div className=" w-[100%] flex justify-center">
         <div className="border-2 border-black p-6  rounded-xl mt-3">
-          <Card color="transparent " shadow={false}>
+          <Card shadow={false}>
             <Typography variant="h4" color="blue-gray">
               Log In
             </Typography>

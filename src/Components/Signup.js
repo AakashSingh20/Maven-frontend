@@ -33,7 +33,7 @@ export const Signup = () => {
     <>
       <div className=" w-[100%] flex justify-center">
         <div className="border-2 border-black p-6  rounded-xl mt-3">
-          <Card color="transparent " shadow={false}>
+          <Card shadow={false}>
             <Typography variant="h4" color="blue-gray">
               Sign Up
             </Typography>
@@ -91,12 +91,12 @@ export const Signup = () => {
                     className="flex items-center font-normal"
                   >
                     I agree the
-                    <a
+                    {/* <a
                       href=""
                       className="font-medium transition-colors hover:text-gray-900"
                     >
                       &nbsp;Terms and Conditions
-                    </a>
+                    </a> */}
                   </Typography>
                 }
                 containerProps={{ className: "-ml-2.5" }}

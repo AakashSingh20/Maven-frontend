@@ -62,7 +62,15 @@ export const Content = ({ type, media }) => {
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer overflow-hidden"
                   onClick={() => specificMovie(item._id)}
                 >
-                  <img src={item.vimage} alt={item.name} />
+                  <img
+                    src={item.vimage}
+                    alt={item.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
                 </div>
               );
             })}
