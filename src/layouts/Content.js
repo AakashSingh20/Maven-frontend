@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { ButtonGroup } from "./Buttons/ButtonGroup";
+import { ButtonGroup } from "../Components/Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
 
 export const Content = ({ type, media }) => {
-  const { setmodalVisible, setmodalMediaId } = useContext(MainContext);
+  const { setmodalVisible, setmodalMediaId, setmediaType } =
+    useContext(MainContext);
 
   const responsive = {
     superLargeDesktop: {
@@ -37,15 +38,16 @@ export const Content = ({ type, media }) => {
     // console.log("movieID", id);
     setmodalVisible(true);
     setmodalMediaId(id);
+    setmediaType(type);
   };
 
   return (
     <>
-      <div className=" mx-4 pt-4 px-7">
+      <div className="pt-4 mx-4 px-7">
         <div className="title">
           <h1 className="text-2xl font-bold">{type}</h1>
         </div>
-        <div className="my-4 mx-6 relative">
+        <div className="relative mx-6 my-4">
           <Carousel
             responsive={responsive}
             arrows={false}

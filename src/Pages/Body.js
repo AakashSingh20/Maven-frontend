@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Content } from "./Content";
-import { MediaModal } from "./MediaModal";
+import { Content } from "../layouts/Content";
+import { MediaModal } from "../layouts/Modal/MediaModal";
 import { MainContext } from "../Context/Context";
 import axios from "axios";
-import { Nav } from "./Nav";
+import { Nav } from "../layouts/Nav";
+// import { SeriesModal } from "./SeriesModal";
 
 export const Body = () => {
-  const { modalVisible } = useContext(MainContext);
+  const { modalVisible, modalMediaId } = useContext(MainContext);
   const [movieArr, setmovieArr] = useState([]);
   const [subArr, setsubArr] = useState([]);
+  const [serArr, setserArr] = useState([]);
 
   const movieData = async () => {
     try {
@@ -27,6 +29,9 @@ export const Body = () => {
           if (res.data.subMovie) {
             setsubArr(res.data.subMovie);
           }
+          if (res.data.series) {
+            setserArr(res.data.series);
+          }
         });
     } catch (error) {
       console.error(error);
@@ -44,11 +49,13 @@ export const Body = () => {
         {movieArr.length > 0 ? (
           <Content media={movieArr} type="Movies" />
         ) : null}
+        {serArr.length > 0 ? <Content media={serArr} type="Series" /> : null}
         {subArr.length > 0 ? (
           <Content media={subArr} type="Premium Content" />
         ) : null}
       </div>
-      <MediaModal isVisible={modalVisible} />
+      <MediaModal isVisible={modalVisible} modalMediaId={modalMediaId} />
+      {/* <SeriesModal isVisible={modalVisible}  /> */}
     </>
   );
 };

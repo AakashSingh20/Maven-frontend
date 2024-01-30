@@ -1,18 +1,17 @@
-import { Body } from "./Components/Body";
+import { Body } from "./Pages/Body";
 // import { Footer } from "./Components/Footer";
-import { Nav } from "./Components/Nav";
-import { Request } from "./Components/Request";
+// import { Nav } from "./Components/Nav";
+import { Request } from "./Pages/Request";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { VideoPage } from "./Components/VideoPage";
-import { Login } from "./Components/Login";
-import { Signup } from "./Components/Signup";
-import { Home } from "./Components/Home";
+import { VideoPage } from "./Pages/VideoPage";
+import { Login } from "./Pages/Login";
+import { Signup } from "./Pages/Signup";
+import { Home } from "./Pages/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <Nav /> */}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/home" element={<Body />} />

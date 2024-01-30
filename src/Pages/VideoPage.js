@@ -2,21 +2,37 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import axios from "axios";
-import { Nav } from "./Nav";
+import { Nav } from "../layouts/Nav";
+import { useContext } from "react";
+import { MainContext } from "../Context/Context";
 
 export const VideoPage = () => {
+  const { seriesLink } = useContext(MainContext);
   const [url, seturl] = useState("");
   const { id } = useParams();
+  // console.log("id", id);
 
   const getMovieUrl = async () => {
-    const res = await axios.get(`http://localhost:4000/movies/url/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: JSON.parse(localStorage.getItem("Token")),
-      },
-    });
-    // console.log("v", res.data.media.main_url);
-    seturl(res.data.media.main_url);
+    try {
+      const res = await axios.get(`http://localhost:4000/movies/url/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: JSON.parse(localStorage.getItem("Token")),
+        },
+      });
+
+      if (res && res.data.media.main_url) {
+        seturl(res.data.media.main_url);
+      }
+    } catch (error) {
+      // console.error("Error fetching video URL:", error);
+    } finally {
+      if (seriesLink) {
+        seturl(seriesLink);
+      } else {
+        console.error("video URL not available");
+      }
+    }
   };
 
   useEffect(() => {
