@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Sparkles } from 'lucide-react';
+import { LogOut } from 'lucide-react';
+import { Aperture } from 'lucide-react';
 
 export const Nav = () => {
   const navigate = useNavigate();
@@ -13,40 +16,68 @@ export const Nav = () => {
     <>
       <div
         className="
-       border-4
-       border-black 
        flex items-center 
+       border-b-2
        justify-between 
-       pl-6 
-       pr-2
-       py-2
-       m-3 
-       rounded-[15px]
+       px-12
+       py-4
        "
       >
-        <div className="leftNav flex">
-          <div className="logo text-4xl font-bold">Maven</div>
-          <ul className="flex items-center space-x-16 ml-20 text-xl font-bold">
+        <div className="flex">
+          <div className="logo text-xl font-bold">
+            <Link to="/home">
+              <Aperture size={32} />
+            </Link>
+          </div>
+          <ul className="flex items-center space-x-16 ml-20 text-l ">
             <li>
               <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/request">Request</Link>
             </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/primium">
+                <div
+                  className="
+                  flex
+                  items-center
+                  justify-between
+
+                  text-primary
+                  bg-blue-300
+                  px-2
+                  py-1
+                  rounded-md
+                  text-white
+                  w-24
+                  "
+                >
+                  <Sparkles size={16} />
+                  Primium
+                </div>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="flex space-x-3">
-          <div className="h-14 w-16 border-4 border-black rounded-[15px] flex items-center justify-center hover:cursor-pointer">
-            <img className=" h-8" src="/images/search.png" alt="search"></img>
+          <div className="h-8 w-[300px] flex flex-wrap items-center justify-center space-x-2">
+            <input
+              type="search"
+              class="relative m-0 -mr-0.5 block min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="button-addon1" />
           </div>
-          {/* <NavLink to={`/login`} className="text-2xl font-bold"> */}
           <div
-            className="h-14 w-16 border-4 border-black rounded-[15px] flex items-center justify-center hover:cursor-pointer"
+            className="h-8 w-12  flex items-center justify-center hover:cursor-pointer"
             onClick={logouthandler}
           >
-            <img className=" h-8" src="/images/logout.png" alt="search"></img>
+            <LogOut />
           </div>
-          {/* </NavLink> */}
         </div>
       </div>
     </>
