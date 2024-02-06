@@ -7,6 +7,7 @@ import { VideoPage } from "./Pages/VideoPage";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { Home } from "./Pages/Home";
+import Subscription from "./layouts/Subscription";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/primium" element={<Subscription />} />
           <Route exact path="/home" element={<Body />} />
           <Route exact path="/request" element={<Request />} />
           <Route exact path="/login" element={<Login />} />
