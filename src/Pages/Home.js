@@ -3,19 +3,38 @@ import { NavLink } from "react-router-dom";
 
 export const Home = () => {
   return (
-    <>
-      <div className="border-2 border-black h-[100%] w-[100%] ">
-        <NavLink to={`/login`} className="font-medium text-gray-900">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Login
-          </button>
-        </NavLink>
-        <NavLink to={`/signup`} className="font-medium text-gray-900">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            signup
-          </button>
-        </NavLink>
+    <div className="flex flex-col items-center justify-center h-screen space-y-6 text-black">
+      <div className="">
+        {/* <Fade top> */}
+        <div className="flex space-x-5">
+          <h1 className="mb-4 text-7xl">Welcome to </h1>
+          <span className="font-bold text-transparent text-7xl bg-gradient-to-r bg-clip-text from-blue-400 to-blue-800">
+            MAVEN
+          </span>
+        </div>
+        <p className="mb-8 text-lg">
+          Watch thousands of movies, TV shows, and exclusive content. Anytime.
+          Anywhere.
+        </p>
+        {/* </Fade> */}
       </div>
-    </>
+      <div className="flex space-x-4">
+        {/* <Fade bottom> */}
+        <NavLink
+          to={"/signup"}
+          className="px-6 py-3 font-bold text-white bg-blue-500 rounded hover:bg-blue-600"
+        >
+          Sign Up
+        </NavLink>
+
+        <NavLink
+          to={"/login"}
+          className="px-6 py-3 font-bold text-white bg-gray-800 rounded hover:bg-gray-700"
+        >
+          Log In
+        </NavLink>
+        {/* </Fade> */}
+      </div>
+    </div>
   );
 };

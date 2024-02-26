@@ -31,61 +31,66 @@ export const Login = () => {
 
   return (
     <>
-      <div className=" w-[100%] flex justify-center">
-        <div className="border-2 border-black p-6  rounded-xl mt-3">
-          <Card shadow={false}>
-            <Typography variant="h4" color="blue-gray">
-              Log In
-            </Typography>
-            <Typography color="gray" className="mt-1 font-normal">
-              Nice to meet you! Enter your details to login.
-            </Typography>
-            <form
-              className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-              // onSubmit={loginhandler}
-            >
-              <div className="mb-1 flex flex-col gap-6">
-                <Typography variant="h6" color="blue-gray" className="-mb-3">
-                  Your Email
-                </Typography>
-                <Input
-                  size="lg"
-                  placeholder="name@mail.com"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                  labelProps={{
-                    className: "before:content-none after:content-none",
-                  }}
-                  value={email}
-                  onChange={(e) => setemail(e.target.value)}
-                />
-                <Typography variant="h6" color="blue-gray" className="-mb-3">
-                  Password
-                </Typography>
-                <Input
-                  type="password"
-                  size="lg"
-                  placeholder="********"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                  labelProps={{
-                    className: "before:content-none after:content-none",
-                  }}
-                  value={password}
-                  onChange={(e) => setpassword(e.target.value)}
-                />
-              </div>
-
-              <Button className="mt-6" fullWidth onClick={loginhandler}>
-                log in
-              </Button>
-              <Typography color="gray" className="mt-4 text-center font-normal">
-                Don't have an account
-                {/* <a href="#" className="font-medium text-gray-900"></a> */}
-                <NavLink to={`/signup`} className="font-medium text-gray-900">
-                  Sign Up
-                </NavLink>
+      <div className="h-[100vh] w-[100vw] flex justify-center items-center">
+        <div className=" w-[100%] flex justify-center">
+          <div className="p-6 mt-3 border-2 border-black rounded-xl">
+            <Card shadow={false}>
+              <Typography variant="h4" color="blue-gray">
+                Log In
               </Typography>
-            </form>
-          </Card>
+              <Typography color="gray" className="mt-1 font-normal">
+                Nice to meet you! Enter your details to login.
+              </Typography>
+              <form
+                className="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96"
+                // onSubmit={loginhandler}
+              >
+                <div className="flex flex-col gap-6 mb-1">
+                  <Typography variant="h6" color="blue-gray" className="-mb-3">
+                    Your Email
+                  </Typography>
+                  <Input
+                    size="lg"
+                    placeholder="name@mail.com"
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    labelProps={{
+                      className: "before:content-none after:content-none",
+                    }}
+                    value={email}
+                    onChange={(e) => setemail(e.target.value)}
+                  />
+                  <Typography variant="h6" color="blue-gray" className="-mb-3">
+                    Password
+                  </Typography>
+                  <Input
+                    type="password"
+                    size="lg"
+                    placeholder="********"
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                    labelProps={{
+                      className: "before:content-none after:content-none",
+                    }}
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
+                  />
+                </div>
+
+                <Button className="mt-6" fullWidth onClick={loginhandler}>
+                  log in
+                </Button>
+                <Typography
+                  color="gray"
+                  className="mt-4 space-x-2 font-normal text-center"
+                >
+                  <a>Don't have an account?</a>
+                  {/* <a href="#" className="font-medium text-gray-900"></a> */}
+                  <NavLink to={`/signup`} className="font-medium text-gray-900">
+                    Sign Up
+                  </NavLink>
+                </Typography>
+              </form>
+            </Card>
+          </div>
         </div>
       </div>
     </>
