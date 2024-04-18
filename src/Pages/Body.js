@@ -61,7 +61,7 @@ export const Body = () => {
         ) : null}
       </div>
       <Modal
-        className="h-[100%] w-[100%]"
+        // className="h-[100%] w-[100%]"
         title="Basic Modal"
         open={isModalOpen}
         onCancel={handleCancel}

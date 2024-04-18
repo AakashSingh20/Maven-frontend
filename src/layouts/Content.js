@@ -63,7 +63,7 @@ export const Content = ({ type, media }) => {
                   key={index}
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer overflow-hidden"
                   // onClick={() => specificMovie(item._id)}
-                  onClick={specificMovie(item._id)}
+                  onClick={specificMovie}
                 >
                   <img
                     src={item.vimage}
