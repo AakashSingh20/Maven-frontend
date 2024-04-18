@@ -3,6 +3,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ButtonGroup } from "../Components/Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
+import { Button } from "antd";
+import { Checkbox } from 'antd';
 
 export const Content = ({ type, media }) => {
   const { setmodalVisible, setmodalMediaId, setmediaType } =
@@ -33,7 +35,6 @@ export const Content = ({ type, media }) => {
     },
   };
   // console.log("content", media);
-
   const specificMovie = (id) => {
     // console.log("movieID", id);
     setmodalVisible(true);
