@@ -5,6 +5,7 @@ import { MainContext } from "../Context/Context";
 import axios from "axios";
 import { Nav } from "../layouts/Nav";
 import { Button, Modal } from "antd";
+import ModalMedia from "../layouts/Modal/ModalMedia";
 // import { SeriesModal } from "./SeriesModal";
 
 export const Body = () => {
@@ -62,12 +63,14 @@ export const Body = () => {
       </div>
       <Modal
         // className="h-[100%] w-[100%]"
-        title="Basic Modal"
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}
+        height="fit-content"
+        width="fit-content"
+        centered={true}
       >
-        {/* <MediaModal isVisible={modalVisible} modalMediaId={modalMediaId} /> */}
+        <ModalMedia />
       </Modal>
       {/* <SeriesModal isVisible={modalVisible}  /> */}
     </>
