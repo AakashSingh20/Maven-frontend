@@ -4,10 +4,12 @@ import { MediaModal } from "../layouts/Modal/MediaModal";
 import { MainContext } from "../Context/Context";
 import axios from "axios";
 import { Nav } from "../layouts/Nav";
+import { Button, Modal } from "antd";
 // import { SeriesModal } from "./SeriesModal";
 
 export const Body = () => {
-  const { modalVisible, modalMediaId } = useContext(MainContext);
+  const { modalVisible, modalMediaId, isModalOpen, setIsModalOpen } =
+    useContext(MainContext);
   const [movieArr, setmovieArr] = useState([]);
   const [subArr, setsubArr] = useState([]);
   const [serArr, setserArr] = useState([]);
@@ -42,6 +44,10 @@ export const Body = () => {
     movieData();
   }, []);
 
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Nav />
@@ -54,7 +60,15 @@ export const Body = () => {
           <Content media={subArr} type="Premium Content" />
         ) : null}
       </div>
-      <MediaModal isVisible={modalVisible} modalMediaId={modalMediaId} />
+      <Modal
+        className="h-[100%] w-[100%]"
+        title="Basic Modal"
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        {/* <MediaModal isVisible={modalVisible} modalMediaId={modalMediaId} /> */}
+      </Modal>
       {/* <SeriesModal isVisible={modalVisible}  /> */}
     </>
   );

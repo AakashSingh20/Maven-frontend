@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useEffect } from "react";
 
 export const MainContext = createContext();
 
@@ -8,6 +9,10 @@ const Context = ({ children }) => {
   const [mediaType, setmediaType] = useState("");
   const [curseason, setcurseason] = useState("1");
   const [seriesLink, setseriesLink] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    console.log("isModalOpen", isModalOpen);
+  }, [isModalOpen]);
 
   return (
     <MainContext.Provider
@@ -22,6 +27,8 @@ const Context = ({ children }) => {
         setcurseason,
         seriesLink,
         setseriesLink,
+        isModalOpen,
+        setIsModalOpen,
       }}
     >
       {children}
