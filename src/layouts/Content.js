@@ -5,7 +5,7 @@ import { ButtonGroup } from "../Components/Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
 
 export const Content = ({ type, media }) => {
-  const { setmodalVisible, setmodalMediaId, setmediaType, setIsModalOpen } =
+  const {setIsModalOpen } =
     useContext(MainContext);
 
   const responsive = {
@@ -34,10 +34,6 @@ export const Content = ({ type, media }) => {
   };
 
   const specificMovie = (id) => {
-    // console.log("movieID", id);
-    // setmodalVisible(true);
-    // setmodalMediaId(id);
-    // setmediaType(type);
     setIsModalOpen(true);
   };
 
@@ -62,7 +58,6 @@ export const Content = ({ type, media }) => {
                 <div
                   key={index}
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer overflow-hidden"
-                  // onClick={() => specificMovie(item._id)}
                   onClick={specificMovie}
                 >
                   <img

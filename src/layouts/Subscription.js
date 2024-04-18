@@ -1,5 +1,6 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import URL from "../utils/API_URL";
 
 const Subscription = () => {
   const makePayment = async (amount) => {
@@ -16,7 +17,7 @@ const Subscription = () => {
     };
 
     const response = await fetch(
-      "http://localhost:4000/stripe/create-checkout-session",
+      `${URL}/stripe/create-checkout-session`,
       {
         method: "POST",
         headers: headers,

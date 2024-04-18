@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import URL from "../utils/API_URL";
 
 export const Signup = () => {
   const [email, setemail] = useState("");
@@ -18,24 +19,23 @@ export const Signup = () => {
 
   const signuphandler = async (e) => {
     e.preventDefault();
-    // console.log(email, password);
     if (!name || !email || !password) {
       alert("Please fill all the fields");
     }
     axios
-      .post("http://localhost:4000/auth/signup", { name, email, password })
+      .post(`${URL}/auth/signup`, { name, email, password })
       .then((res) => {
-        // console.log("sucess", res.data);
         navigate("/login");
       });
   };
+  
   return (
     <>
       <div className="h-[100vh] w-[100vw] flex justify-center items-center">
         <div className=" w-[100%] flex justify-center">
-          <div className="p-6 mt-3 border-2 border-black rounded-xl">
+          <div className="p-6 mt-3 border-black rounded-xl">
             <Card shadow={false}>
-              <Typography variant="h4" color="blue-gray">
+              <Typography variant="h4" color="blue-gray" className="text-transparent text-4xl bg-gradient-to-r bg-clip-text from-blue-400 to-blue-800">
                 Sign Up
               </Typography>
               <Typography color="gray" className="mt-1 font-normal">
@@ -102,7 +102,7 @@ export const Signup = () => {
                   }
                   containerProps={{ className: "-ml-2.5" }}
                 />
-                <Button className="mt-6" fullWidth onClick={signuphandler}>
+                <Button className="mt-6 text-white bg-blue-500 rounded hover:bg-blue-600" fullWidth onClick={signuphandler}>
                   sign up
                 </Button>
                 <Typography
@@ -110,7 +110,6 @@ export const Signup = () => {
                   className="mt-4 space-x-2 font-normal text-center"
                 >
                   <a>Already have an account?</a>
-                  {/* <a href="#" className="font-medium text-gray-900"></a> */}
                   <NavLink to={`/login`} className="font-medium text-gray-900">
                     Log In
                   </NavLink>
