@@ -36,8 +36,4 @@ const Context = ({ children }) => {
   );
 };
 
-// export const MainContext = () => {
-//   return useContext(Context);
-// };
-
 export default Context;

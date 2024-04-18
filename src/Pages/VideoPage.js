@@ -5,16 +5,16 @@ import axios from "axios";
 import { Nav } from "../layouts/Nav";
 import { useContext } from "react";
 import { MainContext } from "../Context/Context";
+import URL from "../utils/API_URL";
 
 export const VideoPage = () => {
   const { seriesLink } = useContext(MainContext);
   const [url, seturl] = useState("");
   const { id } = useParams();
-  // console.log("id", id);
 
   const getMovieUrl = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/movies/url/${id}`, {
+      const res = await axios.get(`${URL}movies/url/${id}`, {
         headers: {
           "Content-Type": "application/json",
           authorization: JSON.parse(localStorage.getItem("Token")),
@@ -25,7 +25,7 @@ export const VideoPage = () => {
         seturl(res.data.media.main_url);
       }
     } catch (error) {
-      // console.error("Error fetching video URL:", error);
+      console.error(error);
     } finally {
       if (seriesLink) {
         seturl(seriesLink);

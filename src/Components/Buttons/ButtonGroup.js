@@ -29,7 +29,6 @@ export const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
   return (
     <div className=" carousel-button-group ">
       <ButtonOne
-        // className={currentSlide === 0 ? "hidden" : ""}
         onClick={() => previous()}
       />
       <ButtonTwo onClick={() => next()} />

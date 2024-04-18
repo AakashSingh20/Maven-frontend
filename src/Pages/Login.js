@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import URL from "../utils/API_URL"; 
 
 export const Login = () => {
   const [email, setemail] = useState("");
@@ -11,17 +12,14 @@ export const Login = () => {
 
   const loginhandler = async (e) => {
     e.preventDefault();
-    // console.log(email, password);
     if (!email || !password) {
       alert("Please fill all the fields");
     }
     axios
-      .post("http://localhost:4000/auth/login", { email, password })
+      .post(`${URL}/auth/login`, { email, password })
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("Token", JSON.stringify(res.data.token));
-          // console.log(localStorage.getItem("Token"));
-          // console.log(JSON.parse(localStorage.getItem("Token")));
           navigate("/home");
         } else {
           alert("Invalid credentials");
@@ -31,11 +29,11 @@ export const Login = () => {
 
   return (
     <>
-      <div className="h-[100vh] w-[100vw] flex justify-center items-center">
+      <div className="h-[100vh] w-[100vw] flex justify-center items-center ">
         <div className=" w-[100%] flex justify-center">
-          <div className="p-6 mt-3 border-2 border-black rounded-xl">
+          <div className="p-6 mt-3 border-black rounded-xl">
             <Card shadow={false}>
-              <Typography variant="h4" color="blue-gray">
+              <Typography variant="h4" color="blue-gray" className="text-transparent text-4xl bg-gradient-to-r bg-clip-text from-blue-400 to-blue-800">
                 Log In
               </Typography>
               <Typography color="gray" className="mt-1 font-normal">
@@ -43,7 +41,6 @@ export const Login = () => {
               </Typography>
               <form
                 className="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96"
-                // onSubmit={loginhandler}
               >
                 <div className="flex flex-col gap-6 mb-1">
                   <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -75,7 +72,7 @@ export const Login = () => {
                   />
                 </div>
 
-                <Button className="mt-6" fullWidth onClick={loginhandler}>
+                <Button className="mt-6 text-white bg-blue-500 rounded hover:bg-blue-600" fullWidth onClick={loginhandler}>
                   log in
                 </Button>
                 <Typography
@@ -83,7 +80,6 @@ export const Login = () => {
                   className="mt-4 space-x-2 font-normal text-center"
                 >
                   <a>Don't have an account?</a>
-                  {/* <a href="#" className="font-medium text-gray-900"></a> */}
                   <NavLink to={`/signup`} className="font-medium text-gray-900">
                     Sign Up
                   </NavLink>

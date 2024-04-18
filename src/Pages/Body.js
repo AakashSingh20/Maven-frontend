@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Content } from "../layouts/Content";
-import { MediaModal } from "../layouts/Modal/MediaModal";
 import { MainContext } from "../Context/Context";
 import axios from "axios";
 import { Nav } from "../layouts/Nav";
-import { Button, Modal } from "antd";
-import ModalMedia from "../layouts/Modal/ModalMedia";
-// import { SeriesModal } from "./SeriesModal";
+import { Modal } from "antd";
+import URL from "../utils/API_URL";
 
 export const Body = () => {
-  const { modalVisible, modalMediaId, isModalOpen, setIsModalOpen } =
-    useContext(MainContext);
+  const { isModalOpen, setIsModalOpen } = useContext(MainContext);
   const [movieArr, setmovieArr] = useState([]);
   const [subArr, setsubArr] = useState([]);
   const [serArr, setserArr] = useState([]);
@@ -18,14 +15,13 @@ export const Body = () => {
   const movieData = async () => {
     try {
       await axios
-        .get("http://localhost:4000/movies/", {
+        .get(`${URL}/movies/`, {
           headers: {
             "Content-Type": "application/json",
             authorization: JSON.parse(localStorage.getItem("Token")),
           },
         })
         .then((res) => {
-          // console.log("body", res.data);
           if (res.data.movie) {
             setmovieArr(res.data.movie);
           }
@@ -72,7 +68,6 @@ export const Body = () => {
       >
         <ModalMedia />
       </Modal>
-      {/* <SeriesModal isVisible={modalVisible}  /> */}
     </>
   );
 };

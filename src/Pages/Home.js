@@ -5,7 +5,6 @@ export const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen space-y-6 text-black">
       <div className="">
-        {/* <Fade top> */}
         <div className="flex space-x-5">
           <h1 className="mb-4 text-7xl">Welcome to </h1>
           <span className="font-bold text-transparent text-7xl bg-gradient-to-r bg-clip-text from-blue-400 to-blue-800">
@@ -16,10 +15,8 @@ export const Home = () => {
           Watch thousands of movies, TV shows, and exclusive content. Anytime.
           Anywhere.
         </p>
-        {/* </Fade> */}
       </div>
       <div className="flex space-x-4">
-        {/* <Fade bottom> */}
         <NavLink
           to={"/signup"}
           className="px-6 py-3 font-bold text-white bg-blue-500 rounded hover:bg-blue-600"
@@ -33,7 +30,6 @@ export const Home = () => {
         >
           Log In
         </NavLink>
-        {/* </Fade> */}
       </div>
     </div>
   );
