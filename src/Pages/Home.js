@@ -1,7 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 
 export const Home = () => {
+
+  const { isSignedIn, user, isLoaded } = useUser();
+
+  if(isSignedIn){
+    window.location.href = "/home";
+  }
+
   return (
     <div className="flex flex-col items-center justify-center h-screen space-y-6 text-black">
       <div className="">
@@ -17,19 +26,11 @@ export const Home = () => {
         </p>
       </div>
       <div className="flex space-x-4">
-        <NavLink
-          to={"/signup"}
-          className="px-6 py-3 font-bold text-white bg-blue-500 rounded hover:bg-blue-600"
-        >
-          Sign Up
-        </NavLink>
-
-        <NavLink
-          to={"/login"}
-          className="px-6 py-3 font-bold text-white bg-gray-800 rounded hover:bg-gray-700"
-        >
-          Log In
-        </NavLink>
+          <div>
+            <SignedOut>
+              <SignInButton className="px-10 py-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600" />
+            </SignedOut>
+          </div>
       </div>
     </div>
   );

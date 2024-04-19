@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Sparkles, LogOut, Aperture } from "lucide-react";
 import { Typography } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
+import { UserButton } from "@clerk/clerk-react"
 
 const { Text } = Typography;
 
@@ -56,12 +57,13 @@ export const Nav = () => {
           </ul>
         </div>
         <div className="flex space-x-3">
-          <div
+          {/* <div
             className="flex items-center justify-center w-12 h-8 hover:cursor-pointer"
             onClick={logouthandler}
           >
             <LogoutOutlined className="text-3xl font-bold" />
-          </div>
+          </div> */}
+          <UserButton />
         </div>
       </div>
     </>

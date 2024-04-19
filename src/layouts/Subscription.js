@@ -4,32 +4,36 @@ import URL from "../utils/API_URL";
 
 const Subscription = () => {
   const makePayment = async (amount) => {
-    const stripe = await loadStripe(
-      "pk_test_51OWB0bSHIT7HwH4CJUTKLyX0jSKROMDYIdXLeWrmglyjoTQX5iuZQejxk4M8LLCPP7ndSYu2PoBGud15lZGHOwFM00tWmIclPa"
-    );
+    try {
+      const stripe = await loadStripe(
+        "pk_test_51P7FcvClJ4Spjkvvsmk42zMvm4EcJCiVumvotpawWZHnpz1nbeYTnErjv2O4AODSbwwXLUBT9k1VPSvvCWGJ1o1m00ODqgC4kp"
+      );
 
-    const body = {
-      amount: amount,
-    };
+      const body = {
+        amount: amount,
+      };
 
-    const headers = {
-      "Content-Type": "application/json",
-    };
+      const headers = {
+        "Content-Type": "application/json",
+      };
 
-    const response = await fetch(`${URL}/stripe/create-checkout-session`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
+      const response = await fetch(`${URL}/stripe/create-checkout-session`, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      });
 
-    const session = await response.json();
+      const session = await response.json();
 
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+      const result = stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
 
-    if (result.error) {
-      console.log(result.error);
+      console.log(result);
+
+    } catch (error) {
+      console.log(error);
+      alert("An error occurred. Please try again later.");
     }
   };
 
