@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from "@clerk/clerk-react";
-import { useUser } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
+import { useUser, useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 
 export const Home = () => {
-
   const { isSignedIn, user, isLoaded } = useUser();
+  const { userId } = useAuth();
 
-  if(isSignedIn){
-    window.location.href = "/home";
-  }
+  const auth = async () => {
+    if(!userId) return;
+    axios.post("http://localhost:4000/auth/clerk", { userId }).then((res) => {
+      if (res.status === 200) {
+        localStorage.setItem("Token", JSON.stringify(res.data.token));
+        window.location.href = "/home";
+      } else {
+        alert("Invalid credentials");
+      }
+    });
+  };
+
+  useEffect(() => {
+    auth();
+  }, [userId]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen space-y-6 text-black">
@@ -26,11 +45,11 @@ export const Home = () => {
         </p>
       </div>
       <div className="flex space-x-4">
-          <div>
-            <SignedOut>
-              <SignInButton className="px-10 py-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600" />
-            </SignedOut>
-          </div>
+        <div>
+          <SignedOut>
+            <SignInButton className="px-10 py-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600" />
+          </SignedOut>
+        </div>
       </div>
     </div>
   );
