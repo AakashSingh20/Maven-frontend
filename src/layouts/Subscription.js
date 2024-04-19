@@ -16,14 +16,11 @@ const Subscription = () => {
       "Content-Type": "application/json",
     };
 
-    const response = await fetch(
-      `${URL}/stripe/create-checkout-session`,
-      {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(body),
-      }
-    );
+    const response = await fetch(`${URL}/stripe/create-checkout-session`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    });
 
     const session = await response.json();
 

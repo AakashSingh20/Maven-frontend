@@ -14,7 +14,7 @@ export const VideoPage = () => {
 
   const getMovieUrl = async () => {
     try {
-      const res = await axios.get(`${URL}movies/url/${id}`, {
+      const res = await axios.get(`${URL}/movies/url/${id}`, {
         headers: {
           "Content-Type": "application/json",
           authorization: JSON.parse(localStorage.getItem("Token")),

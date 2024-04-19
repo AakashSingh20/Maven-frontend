@@ -5,7 +5,7 @@ import { ButtonGroup } from "../Components/Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
 
 export const Content = ({ type, media }) => {
-  const {setIsModalOpen } =
+  const { setIsModalOpen, setmodalMediaId, setmediaType } =
     useContext(MainContext);
 
   const responsive = {
@@ -35,6 +35,8 @@ export const Content = ({ type, media }) => {
 
   const specificMovie = (id) => {
     setIsModalOpen(true);
+    setmodalMediaId(id);
+    setmediaType(type);
   };
 
   return (
@@ -58,7 +60,7 @@ export const Content = ({ type, media }) => {
                 <div
                   key={index}
                   className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer overflow-hidden"
-                  onClick={specificMovie}
+                  onClick={() => specificMovie(item._id)}
                 >
                   <img
                     src={item.vimage}

@@ -5,9 +5,16 @@ import axios from "axios";
 import { Nav } from "../layouts/Nav";
 import { Modal } from "antd";
 import URL from "../utils/API_URL";
+import ModalMedia from "../layouts/Modal/ModalMedia";
 
 export const Body = () => {
-  const { isModalOpen, setIsModalOpen } = useContext(MainContext);
+  const {
+    isModalOpen,
+    setIsModalOpen,
+    modalMediaId,
+    setmodalMediaId,
+    setmediaType,
+  } = useContext(MainContext);
   const [movieArr, setmovieArr] = useState([]);
   const [subArr, setsubArr] = useState([]);
   const [serArr, setserArr] = useState([]);
@@ -29,6 +36,7 @@ export const Body = () => {
             setsubArr(res.data.subMovie);
           }
           if (res.data.series) {
+            // console.log("series", res.data.series);
             setserArr(res.data.series);
           }
         });
@@ -39,10 +47,14 @@ export const Body = () => {
 
   useEffect(() => {
     movieData();
+    setmodalMediaId("");
+    setmediaType("");
   }, []);
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    setmodalMediaId("");
+    setmediaType("");
   };
 
   return (
