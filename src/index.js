@@ -5,14 +5,24 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Context from "./Context/Context";
 import { ThemeProvider } from "@material-tailwind/react";
+import { ClerkProvider } from '@clerk/clerk-react'
+
+
+// const PUBLISHABLE_KEY = process.env.REACT_CLERK_PUBLISHABLE_KEY
+
+// if(!PUBLISHABLE_KEY) {
+//   throw new Error('REACT_CLERK_PUBLISHABLE_KEY is not set')
+// }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider>
-    <Context>
-      <App />
-    </Context>
-  </ThemeProvider>
+  <ClerkProvider publishableKey="pk_test_c3RpcnJlZC1idWctOTkuY2xlcmsuYWNjb3VudHMuZGV2JA">
+    <ThemeProvider>
+      <Context>
+        <App />
+      </Context>
+    </ThemeProvider>
+  </ClerkProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

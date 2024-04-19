@@ -1,6 +1,7 @@
 import { Body } from "./Pages/Body";
 // import { Footer } from "./Components/Footer";
 // import { Nav } from "./Components/Nav";
+import { Footer } from "./layouts/Footer";
 import { Request } from "./Pages/Request";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { VideoPage } from "./Pages/VideoPage";
@@ -23,7 +24,7 @@ function App() {
           <Route exact path="/home/:id" element={<VideoPage />} />
           {/* <Route exact path="/test" element={} /> */}
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );
