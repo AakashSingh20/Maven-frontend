@@ -3,6 +3,9 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ButtonGroup } from "../Components/Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
+import { Typography } from "antd";
+
+const { Title } = Typography;
 
 export const Content = ({ type, media }) => {
   const { setIsModalOpen, setmodalMediaId, setmediaType } =
@@ -42,9 +45,7 @@ export const Content = ({ type, media }) => {
   return (
     <>
       <div className="pt-4 mx-4 px-7">
-        <div className="title">
-          <h1 className="text-2xl font-bold">{type}</h1>
-        </div>
+        <Title level={3}>{type}</Title>
         <div className="relative mx-6 my-4">
           <Carousel
             responsive={responsive}
@@ -59,7 +60,7 @@ export const Content = ({ type, media }) => {
               return (
                 <div
                   key={index}
-                  className="border-4 border-black rounded-[20px] h-56 w-44 hover:cursor-pointer overflow-hidden"
+                  className="border-1 border-black rounded-[10px] h-56 w-44 hover:cursor-pointer overflow-hidden"
                   onClick={() => specificMovie(item._id)}
                 >
                   <img

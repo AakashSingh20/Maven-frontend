@@ -1,4 +1,6 @@
 import React from "react";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 export const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
   const ButtonOne = ({ onClick, className }) => {
@@ -6,9 +8,9 @@ export const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
       <button
         onClick={onClick}
         type="button"
-        className={` bg-white ring-4 ring-black font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 absolute top-[40%] left-[-50px] carousel-button-two ${className}`}
+        className={`  text-sm p-2.5 text-center inline-flex items-center mr-2 absolute top-[40%] left-[-50px] carousel-button-two ${className}`}
       >
-        <img className=" h-5" src="/images/backward.png" alt="arrow l" />
+        <ArrowLeftOutlined className="text-xl font-extrabold " />
       </button>
     );
   };
@@ -17,9 +19,9 @@ export const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
       <button
         onClick={onClick}
         type="button"
-        className={`bg-white ring-4 ring-black font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 absolute top-[40%] right-[-50px] carousel-button-two ${className}`}
+        className={`p-2.5 text-center inline-flex items-center mr-2 absolute top-[40%] right-[-50px] carousel-button-two ${className}`}
       >
-        <img className=" h-5" src="/images/forward.png" alt="arrow r" />
+        <ArrowRightOutlined className="text-xl font-extrabold " />
       </button>
     );
   };
@@ -27,10 +29,8 @@ export const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
     carouselState: { currentSlide },
   } = rest;
   return (
-    <div className=" carousel-button-group ">
-      <ButtonOne
-        onClick={() => previous()}
-      />
+    <div className=" carousel-button-group">
+      <ButtonOne onClick={() => previous()} />
       <ButtonTwo onClick={() => next()} />
     </div>
   );

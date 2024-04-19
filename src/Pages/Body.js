@@ -47,14 +47,10 @@ export const Body = () => {
 
   useEffect(() => {
     movieData();
-    setmodalMediaId("");
-    setmediaType("");
   }, []);
 
   const handleCancel = () => {
     setIsModalOpen(false);
-    setmodalMediaId("");
-    setmediaType("");
   };
 
   return (
