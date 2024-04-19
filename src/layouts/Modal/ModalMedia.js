@@ -47,9 +47,11 @@ const ModalMedia = () => {
   return (
     <>
       <div className="outer_body_modal h-[530px] w-[1000px] flex justify-center">
-        {mediaType === "Movies" && <Movie data={data} id={id} />}
-        {mediaType === "Premium Content" && <Movie data={data} id={id} />}
-        {mediaType === "Series" && <Series data={data} />}
+        <>
+          {mediaType === "Movies" && <Movie data={data} id={id} />}
+          {mediaType === "Premium Content" && <Movie data={data} id={id} />}
+          {mediaType === "Series" && <Series data={data} />}
+        </>
       </div>
     </>
   );

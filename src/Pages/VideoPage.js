@@ -42,7 +42,7 @@ export const VideoPage = () => {
     <>
       <Nav />
       <div className="flex items-center justify-center w-[100vw] h-[80vh] mt-6 overflow-hidden ">
-        <div className="flex items-center justify-center w-[71vw] h-[80vh] border border-black">
+        <div className="flex items-center justify-center w-[71vw] h-[80vh]">
           <ReactPlayer
             url={url}
             controls={true}

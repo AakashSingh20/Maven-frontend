@@ -17,7 +17,7 @@ export const Nav = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between px-10 py-4 border-b-2 ">
+      <div className="sticky top-0 z-50 flex items-center justify-between px-10 py-4 bg-white border-b-2">
         <div className="flex">
           <div className="text-xl font-bold logo">
             <Link to="/home">
