@@ -57,7 +57,11 @@ export const Body = () => {
   return (
     <>
       <Nav />
-      <Carousels />
+      <div className="flex items-center justify-center mt-6">
+        <div className="w-[90vw]">
+          <Carousels />
+        </div>
+      </div>
       <div className="">
         {movieArr.length > 0 ? (
           <Content media={movieArr} type="Movies" />

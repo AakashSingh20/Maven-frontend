@@ -1,13 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 import { useUser } from "@clerk/clerk-react";
 
 export const Home = () => {
-
   const { isSignedIn, user, isLoaded } = useUser();
 
-  if(isSignedIn){
+  if (isSignedIn) {
     window.location.href = "/home";
   }
 
@@ -25,12 +30,12 @@ export const Home = () => {
           Anywhere.
         </p>
       </div>
-      <div className="flex space-x-4">
-          <div>
-            <SignedOut>
-              <SignInButton className="px-10 py-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600" />
-            </SignedOut>
-          </div>
+      <div className="flex space-x-4= w-[130px] h-[56px] font-bold text-white bg-blue-400 rounded">
+        <div>
+          <SignedOut>
+            <SignInButton className="px-10 py-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600" />
+          </SignedOut>
+        </div>
       </div>
     </div>
   );

@@ -9,6 +9,11 @@ import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { Home } from "./Pages/Home";
 import Subscription from "./layouts/Subscription";
+import Policy from "./Pages/Policy";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Terms from "./Pages/Terms";
+import Refund from "./Pages/Refund";
 
 function App() {
   return (
@@ -22,7 +27,11 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/home/:id" element={<VideoPage />} />
-          {/* <Route exact path="/test" element={} /> */}
+          <Route exact path="/policy" element={<Policy />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/terms" element={<Terms />} />
+          <Route exact path="/refund" element={<Refund />} />
         </Routes>
         <Footer />
       </BrowserRouter>
