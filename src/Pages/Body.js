@@ -6,6 +6,7 @@ import { Nav } from "../layouts/Nav";
 import { Modal } from "antd";
 import URL from "../utils/API_URL";
 import ModalMedia from "../layouts/Modal/ModalMedia";
+import Carousels from "../layouts/Carousel";
 
 export const Body = () => {
   const {
@@ -56,6 +57,7 @@ export const Body = () => {
   return (
     <>
       <Nav />
+      <Carousels />
       <div className="">
         {movieArr.length > 0 ? (
           <Content media={movieArr} type="Movies" />

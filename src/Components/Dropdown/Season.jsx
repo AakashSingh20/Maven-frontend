@@ -1,48 +1,48 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MainContext } from "../../Context/Context";
+import { Select } from "antd";
 
+const { Option } = Select;
 export const Season = ({ length }) => {
   const { setcurseason } = useContext(MainContext);
-  const [open, setOpen] = useState(false);
-  const [selectedSeason, setSelectedSeason] = useState(1);
+  const [options, setOptions] = useState([]);
 
-  const handleSeasonClick = (season) => {
-    setSelectedSeason(season);
-    setcurseason(season);
-    setOpen(false);
+  const handleSeasonChange = (value) => {
+    setcurseason(value);
   };
 
-  const renderDropdownOptions = () => {
-    const options = [];
+  const pushObjects = () => {
+    let arr = [];
     for (let i = 1; i <= length; i++) {
-      if (i !== selectedSeason) {
-        options.push(
-          <div
-            key={i}
-            className="season w-[145px] h-[45px] flex justify-center items-center rounded-[20px] hover:cursor-pointer hover:bg-blue-gray-100"
-            onClick={() => handleSeasonClick(i)}
-          >
-            Season {i}
-          </div>
-        );
-      }
+      arr.push({
+        value: i,
+        label: `Season ${i}`,
+      });
     }
-    return options;
+    setOptions(arr);
   };
+
+  useEffect(() => {
+   if(length > 0){
+     pushObjects();
+   }
+  }, []);
 
   return (
-    <>
+    <> 
       <div className="absolute">
-        <div
-          className="season border-2 border-black w-[145px] h-[45px] flex justify-center items-center rounded-[10px] hover:cursor-pointer"
-          onClick={() => setOpen(!open)}
-        >
-          Season {selectedSeason}
-        </div>
-        {open && length > 1 && (
-          <div className="options border-2 border-black w-[145px] flex flex-col justify-center items-center rounded-[10px] bg-white">
-            {renderDropdownOptions()}
-          </div>
+        {options.length > 0 && (
+          <Select
+            defaultValue="Seasons"
+            style={{ width: 120, height: 40 }}
+            onChange={handleSeasonChange}
+          >
+            {options.map((option) => (
+              <Option key={option.value} value={option.value}>
+                {option.label}
+              </Option>
+            ))}
+          </Select>
         )}
       </div>
     </>
