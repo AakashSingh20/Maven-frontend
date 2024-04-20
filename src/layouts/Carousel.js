@@ -16,7 +16,7 @@ const Carousels = () => {
     <Carousel autoplay>
       <div>
         <h3 style={contentStyle}>
-          <img src="/images/banner.jpg" style={{}} alt="banner" />
+          <img src="/images/banner 3.jpg" style={{}} alt="banner" />
         </h3>
       </div>
       <div>
@@ -27,7 +27,7 @@ const Carousels = () => {
       <div>
         <h3 style={contentStyle}>
           <img
-            src="/images/banner 3.jpg"
+            src="/images/banner 4.jpg"
             style={{ width: "100%", height: "auto", verticalAlign: "middle" }}
             alt="banner"
           />
@@ -35,7 +35,7 @@ const Carousels = () => {
       </div>
       <div>
         <h3 style={contentStyle}>
-          <img src="/images/banner 4.jpg" alt="banner" />
+          <img src="/images/banner.jpg" alt="banner" />
         </h3>
       </div>
     </Carousel>

@@ -28,7 +28,7 @@ export const Series = ({ data }) => {
 
   useEffect(() => {
     if (ndata && ndata.seasons && ndata.seasons.length > 0) {
-      setseason(ndata.seasons[curseason].episodes);
+      setseason(ndata.seasons[curseason - 1].episodes);
     }
   }, [curseason, ndata]);
 

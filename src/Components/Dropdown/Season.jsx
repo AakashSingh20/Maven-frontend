@@ -1,45 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MainContext } from "../../Context/Context";
 import { Select } from "antd";
 
-const { Option } = Select;
-
 export const Season = ({ length }) => {
   const { curseason, setcurseason } = useContext(MainContext);
-  const [selectedSeason, setSelectedSeason] = useState(curseason + 1);
+  const [selectedSeason, setSelectedSeason] = useState(curseason);
+  const [options, setOptions] = useState([]);
 
   const handleSeasonChange = (value) => {
     setSelectedSeason(value);
-    setcurseason(value - 1);
+    setcurseason(value);
   };
 
-  const renderSelectOptions = () => {
-    const options = [];
-    if (length === 0) {
-      options.push(
-        <Option key={1} value={1}>
-          Season 1
-        </Option>
+  useEffect(() => {
+    function generateOptions(length) {
+      const arr = [];
+      for (let i = 1; i <= length; i++) {
+        arr.push({
+          value: i,
+          label: 'Season ' + i,
+        });
+      }
+      setOptions(arr);
+    }
 
-      );
-    }
-    for (let i = 1; i <= length; i++) {
-      options.push(
-        <Option key={i} value={i}>
-          Season {i}
-        </Option>
-      );
-    }
-    return options;
-  };
+    generateOptions(length);
+  }, [length]);
 
   return (
     <Select
       defaultValue={selectedSeason}
       style={{ width: 120 }}
       onChange={handleSeasonChange}
-    >
-      {renderSelectOptions()}
-    </Select>
+      options={options}
+    />
   );
 };
