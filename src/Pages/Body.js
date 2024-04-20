@@ -19,6 +19,7 @@ export const Body = () => {
   const [movieArr, setmovieArr] = useState([]);
   const [subArr, setsubArr] = useState([]);
   const [serArr, setserArr] = useState([]);
+  const [role, setrole] = useState("");
 
   const GhostMedia = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -32,6 +33,9 @@ export const Body = () => {
           },
         })
         .then((res) => {
+          if (res.data.role) {
+            setrole(res.data.role);
+          }
           if (res.data.movie) {
             setmovieArr(res.data.movie);
           }
@@ -75,7 +79,7 @@ export const Body = () => {
         ) : (
           <Content media={GhostMedia} type="Ghost" />
         )}
-        {subArr.length > 0 ? (
+        {subArr.length > 0 && role === "admin" ? (
           <Content media={subArr} type="Premium Content" />
         ) : (
           <Content media={GhostMedia} type="Ghost" />

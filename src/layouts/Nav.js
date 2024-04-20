@@ -13,7 +13,7 @@ export const Nav = () => {
 
   const logouthandler = () => {
     localStorage.removeItem("Token");
-    navigate("/");
+    // navigate("/");
   };
 
   return (
@@ -59,7 +59,9 @@ export const Nav = () => {
           >
             <LogoutOutlined className="text-3xl font-bold" />
           </div> */}
-          <UserButton />
+          <div className="" onClick={logouthandler}>
+            <UserButton />
+          </div>
         </div>
       </div>
     </>

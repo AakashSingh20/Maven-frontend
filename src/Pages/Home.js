@@ -10,8 +10,10 @@ import {
 import { Spin } from "antd";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   const { isSignedIn, user, isLoaded } = useUser();
   const { userId } = useAuth();
 
@@ -20,7 +22,8 @@ export const Home = () => {
     axios.post("http://localhost:4000/auth/clerk", { userId }).then((res) => {
       if (res.status === 200) {
         localStorage.setItem("Token", JSON.stringify(res.data.token));
-        window.location.href = "/home";
+        // window.location.href = "/home";
+        navigate("/home");
       } else {
         alert("Invalid credentials");
       }
