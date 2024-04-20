@@ -9,13 +9,7 @@ import ModalMedia from "../layouts/Modal/ModalMedia";
 import Carousels from "../layouts/Carousel";
 
 export const Body = () => {
-  const {
-    isModalOpen,
-    setIsModalOpen,
-    modalMediaId,
-    setmodalMediaId,
-    setmediaType,
-  } = useContext(MainContext);
+  const { isModalOpen, setIsModalOpen } = useContext(MainContext);
   const [movieArr, setmovieArr] = useState([]);
   const [subArr, setsubArr] = useState([]);
   const [serArr, setserArr] = useState([]);
@@ -43,7 +37,6 @@ export const Body = () => {
             setsubArr(res.data.subMovie);
           }
           if (res.data.series) {
-            // console.log("series", res.data.series);
             setserArr(res.data.series);
           }
         });
@@ -79,10 +72,15 @@ export const Body = () => {
         ) : (
           <Content media={GhostMedia} type="Ghost" />
         )}
-        {subArr.length > 0 && role === "admin" ? (
-          <Content media={subArr} type="Premium Content" />
-        ) : (
-          <Content media={GhostMedia} type="Ghost" />
+
+        {role === "admin" && (
+          <>
+            {subArr.length > 0 ? (
+              <Content media={subArr} type="Premium Content" />
+            ) : (
+              <Content media={GhostMedia} type="Ghost" />
+            )}
+          </>
         )}
       </div>
       <Modal
