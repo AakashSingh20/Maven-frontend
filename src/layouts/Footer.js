@@ -1,6 +1,7 @@
 import React from "react";
 
 export const Footer = () => {
+  // fixed bottom-0
   return (
     <footer className="w-full bg-white rounded-lg shadow dark:bg-gray-900 ">
       <div className="w-full max-w-screen-xl p-4 mx-auto md:py-8">
