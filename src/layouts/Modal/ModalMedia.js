@@ -4,6 +4,7 @@ import { MainContext } from "../../Context/Context";
 import { Movie } from "./Movie";
 import { Series } from "./Series";
 import axios from "axios";
+import { Skeleton } from "antd";
 
 const ModalMedia = () => {
   const { mediaType, isModalOpen, modalMediaId } = useContext(MainContext);
@@ -25,7 +26,7 @@ const ModalMedia = () => {
           },
         })
         .then((res) => {
-          //   console.log("data", id, res.data.media);
+          console.log("data", id, res.data);
           setid(res.data.media._id);
           setdata(res.data.media);
         });
@@ -48,9 +49,18 @@ const ModalMedia = () => {
     <>
       <div className="outer_body_modal h-[530px] w-[1000px] flex justify-center">
         <>
+          {mediaType === "Series" && <Series data={data} />}
           {mediaType === "Movies" && <Movie data={data} id={id} />}
           {mediaType === "Premium Content" && <Movie data={data} id={id} />}
-          {mediaType === "Series" && <Series data={data} />}
+          {/* {mediaType === "Premium Content" && (
+            <>
+              {data && data.seasons && data.seasons.length > 0 ? (
+                <Movie data={data} id={id} />
+              ) : (
+                <Skeleton active />
+              )}
+            </>
+          )} */}
         </>
       </div>
     </>

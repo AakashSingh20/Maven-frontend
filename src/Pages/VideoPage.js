@@ -6,6 +6,7 @@ import { Nav } from "../layouts/Nav";
 import { useContext } from "react";
 import { MainContext } from "../Context/Context";
 import URL from "../utils/API_URL";
+import { Skeleton } from "antd";
 
 export const VideoPage = () => {
   const { seriesLink } = useContext(MainContext);
@@ -42,15 +43,26 @@ export const VideoPage = () => {
     <>
       <Nav />
       <div className="flex items-center justify-center w-[100vw] h-[80vh] mt-6 overflow-hidden ">
-        <div className="flex items-center justify-center w-[71vw] h-[80vh]">
-          <ReactPlayer
-            url={url}
-            controls={true}
-            playing={false}
-            width="100%"
-            height="100%"
-          />
-        </div>
+        {url ? (
+          <div className="flex items-center justify-center w-[71vw] h-[80vh] rounded-[10px] overflow-hidden">
+            <ReactPlayer
+              url={url}
+              controls={true}
+              playing={false}
+              width="100%"
+              height="100%"
+            />
+          </div>
+        ) : (
+          <div className="" style={{ width: "71vw" }}>
+            <Skeleton.Button
+              style={{ height: "80vh" }}
+              size="large"
+              block
+              active
+            />
+          </div>
+        )}
       </div>
     </>
   );

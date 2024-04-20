@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Sparkles, LogOut, Aperture } from "lucide-react";
 import { Typography } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
-import { UserButton } from "@clerk/clerk-react"
+import { UserButton } from "@clerk/clerk-react";
 
 const { Text } = Typography;
 
@@ -18,7 +18,7 @@ export const Nav = () => {
 
   return (
     <>
-      <div className="sticky top-0 z-50 flex items-center justify-between px-10 py-4 bg-white border-b-2">
+      <div className="sticky top-0 z-50 flex items-center justify-between px-10 py-4 bg-white border-b-2 shadow-md">
         <div className="flex">
           <div className="text-xl font-bold logo">
             <Link to="/home">
@@ -39,11 +39,7 @@ export const Nav = () => {
                 <Text strong>Request</Text>
               </Link>
             </li>
-            <li>
-              <Link to="/profile">
-                <Text strong>Profile</Text>
-              </Link>
-            </li>
+
             <li>
               <Link to="/premium">
                 <div className="flex items-center justify-between w-24 px-2 py-1 text-white bg-blue-500 rounded-md text-primary">
@@ -56,7 +52,7 @@ export const Nav = () => {
             </li>
           </ul>
         </div>
-        <div className="flex space-x-3">
+        <div className="clerk ">
           {/* <div
             className="flex items-center justify-center w-12 h-8 hover:cursor-pointer"
             onClick={logouthandler}

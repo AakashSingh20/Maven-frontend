@@ -20,6 +20,8 @@ export const Body = () => {
   const [subArr, setsubArr] = useState([]);
   const [serArr, setserArr] = useState([]);
 
+  const GhostMedia = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
   const movieData = async () => {
     try {
       await axios
@@ -57,22 +59,29 @@ export const Body = () => {
   return (
     <>
       <Nav />
-      <div className="flex items-center justify-center mt-6">
-        <div className="w-[90vw]">
+      <div className="flex items-center justify-center mt-6 ">
+        <div className="w-[90vw] rounded-[10px] overflow-hidden">
           <Carousels />
         </div>
       </div>
       <div className="">
         {movieArr.length > 0 ? (
           <Content media={movieArr} type="Movies" />
-        ) : null}
-        {serArr.length > 0 ? <Content media={serArr} type="Series" /> : null}
+        ) : (
+          <Content media={GhostMedia} type="Ghost" />
+        )}
+        {serArr.length > 0 ? (
+          <Content media={serArr} type="Series" />
+        ) : (
+          <Content media={GhostMedia} type="Ghost" />
+        )}
         {subArr.length > 0 ? (
           <Content media={subArr} type="Premium Content" />
-        ) : null}
+        ) : (
+          <Content media={GhostMedia} type="Ghost" />
+        )}
       </div>
       <Modal
-        // className="h-[100%] w-[100%]"
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}

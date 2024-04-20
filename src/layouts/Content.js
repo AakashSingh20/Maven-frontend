@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ButtonGroup } from "../Components/Buttons/ButtonGroup";
 import { MainContext } from "../Context/Context";
-import { Typography } from "antd";
+import { Skeleton, Typography } from "antd";
 
 const { Title } = Typography;
 
@@ -45,37 +45,60 @@ export const Content = ({ type, media }) => {
   return (
     <>
       <div className="pt-4 mx-4 px-7">
-        <Title level={3}>{type}</Title>
+        <Title level={3}>{type === "Ghost" ? "" : type}</Title>
         <div className="relative mx-6 my-4">
-          <Carousel
-            responsive={responsive}
-            arrows={false}
-            renderButtonGroupOutside={true}
-            customButtonGroup={<ButtonGroup />}
-            partialVisible={true}
-            draggable={false}
-            infinite={true}
-          >
-            {media.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="border-1 border-black rounded-[10px] h-56 w-44 hover:cursor-pointer overflow-hidden"
-                  onClick={() => specificMovie(item._id)}
-                >
-                  <img
-                    src={item.vimage}
-                    alt={item.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-              );
-            })}
-          </Carousel>
+          {type !== "Ghost" ? (
+            <Carousel
+              responsive={responsive}
+              arrows={false}
+              renderButtonGroupOutside={true}
+              customButtonGroup={<ButtonGroup />}
+              partialVisible={true}
+              draggable={false}
+              infinite={true}
+            >
+              {media.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="border-1 border-black rounded-[10px] h-56 w-44 hover:cursor-pointer overflow-hidden"
+                    onClick={() => specificMovie(item._id)}
+                  >
+                    <img
+                      src={item.vimage}
+                      alt={item.name}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </Carousel>
+          ) : (
+            <Carousel
+              responsive={responsive}
+              arrows={false}
+              renderButtonGroupOutside={true}
+              // customButtonGroup={<ButtonGroup />}
+              partialVisible={true}
+              draggable={false}
+              infinite={true}
+            >
+              {media.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="border-1 border-black rounded-[10px] h-56 w-44 hover:cursor-pointer overflow-hidden"
+                  >
+                    <Skeleton.Input style={{ height: "224px" }} block active />
+                  </div>
+                );
+              })}
+            </Carousel>
+          )}
         </div>
       </div>
     </>

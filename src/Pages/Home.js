@@ -8,6 +8,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import { useUser } from "@clerk/clerk-react";
+import { Spin } from "antd";
 
 export const Home = () => {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -30,12 +31,16 @@ export const Home = () => {
           Anywhere.
         </p>
       </div>
-      <div className="flex space-x-4= w-[130px] h-[56px] font-bold text-white bg-blue-400 rounded">
-        <div>
+      <div>
+        {isLoaded ? (
           <SignedOut>
             <SignInButton className="px-10 py-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-600" />
           </SignedOut>
-        </div>
+        ) : (
+          <div className="w-[130px] h-[56px] font-bold text-white rounded hover:bg-blue-600 flex items-center justify-center">
+            <Spin size="large" />
+          </div>
+        )}
       </div>
     </div>
   );

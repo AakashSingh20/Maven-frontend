@@ -33,7 +33,9 @@ function App() {
           <Route exact path="/terms" element={<Terms />} />
           <Route exact path="/refund" element={<Refund />} />
         </Routes>
-        <Footer />
+        <div className="overflow-x-hidden">
+          <Footer />
+        </div>
       </BrowserRouter>
     </>
   );
