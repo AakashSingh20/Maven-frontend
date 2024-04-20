@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
   SignedIn,
@@ -7,15 +7,29 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import { useUser } from "@clerk/clerk-react";
 import { Spin } from "antd";
+import { useUser, useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 
 export const Home = () => {
   const { isSignedIn, user, isLoaded } = useUser();
+  const { userId } = useAuth();
 
-  if (isSignedIn) {
-    window.location.href = "/home";
-  }
+  const auth = async () => {
+    if (!userId) return;
+    axios.post("http://localhost:4000/auth/clerk", { userId }).then((res) => {
+      if (res.status === 200) {
+        localStorage.setItem("Token", JSON.stringify(res.data.token));
+        window.location.href = "/home";
+      } else {
+        alert("Invalid credentials");
+      }
+    });
+  };
+
+  useEffect(() => {
+    auth();
+  }, [userId]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen space-y-6 text-black">
