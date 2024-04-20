@@ -21,8 +21,7 @@ export const Home = () => {
     if (!userId) return;
     axios.post("http://localhost:4000/auth/clerk", { userId }).then((res) => {
       if (res.status === 200) {
-        localStorage.setItem("Token", JSON.stringify(res.data.token));
-        // window.location.href = "/home";
+        localStorage.setItem("Token", JSON.stringify(res.data));
         navigate("/home");
       } else {
         alert("Invalid credentials");
